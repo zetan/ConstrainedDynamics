@@ -31,6 +31,8 @@ void GLCanvas::updateGL(){
 	//ballisticScene.Update();
 	
 	//spring.Update();
+	beadOnWire.Update();
+
 	update();
 
 }
@@ -42,11 +44,9 @@ void GLCanvas::paintGL()
 	glLoadIdentity();       // Reset The Current Modelview Matrix  
 
 	glTranslatef( 0.0,  0.0, -5.0 );
-	glBegin( GL_TRIANGLES );
-	glVertex3f(  0.0,  1.0,  0.0 );
-	glVertex3f( -1.0, -1.0,  0.0 );
-	glVertex3f(  1.0, -1.0,  0.0 );
-	glEnd();
+
+
+	beadOnWire.Draw();
 
 }  
 

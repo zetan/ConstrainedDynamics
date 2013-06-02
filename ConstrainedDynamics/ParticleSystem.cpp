@@ -1,9 +1,9 @@
 #include "ParticleSystem.h"
 
-ParticleSystem::ParticleSystem(vector<Particle> particles){
+/*ParticleSystem::ParticleSystem(vector<Particle> particles){
 	this->particles = particles;
 }
-
+*/
 void ParticleSystem::ClearForces(){
 	for(int i = 0; i < particles.size(); i++)
 		particles[i].ClearForce();

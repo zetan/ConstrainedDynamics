@@ -6,6 +6,7 @@
 #include <GL/GLU.h>
 #include <gl/glut.h>
 #include "global.h"
+#include "BeadOnWire.h"
 
 class QTimer;  
 class QKeyEvent;  
@@ -32,10 +33,9 @@ protected:
 
 private:  
 	QTimer *timer;  
-	
 	bool fullscreen;  //窗口是否全屏显示  
-
 	SCENCE scene;
+	BeadOnWire beadOnWire;
 };  
 
 #endif // MYGLWIDGET_H  

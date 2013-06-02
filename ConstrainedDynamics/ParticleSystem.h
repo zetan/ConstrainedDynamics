@@ -11,9 +11,10 @@ using namespace std;
 class ParticleSystem{
 public:
 	ParticleSystem(){}
-	ParticleSystem(vector<Particle> particles);
+//	ParticleSystem(vector<Particle> particles);
 	~ParticleSystem(){}
 	void Update();
+	virtual void Draw(){}
 protected:
 	void ClearForces();
 	virtual void ApplyForces(){}

@@ -3,11 +3,12 @@
 #include "Force.h"
 class Gravity : public Force{
 public:
-	Gravity(){}
+	Gravity(){gravity = Vector3D(0, -10, 0);}
 	~Gravity(){}
 	void ApplyForce(Particle* particle){
-		particle->force = Vector3D.Add(particle->force, gravity);}
+		
+		particle->setForce(Vector3D::Add(particle->getForce(), gravity));}
 private:
-	const Vector3D gravity = Vector3D(0, -10, 0); 
+	Vector3D gravity;
 };
 #endif
