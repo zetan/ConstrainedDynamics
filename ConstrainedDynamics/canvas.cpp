@@ -28,11 +28,9 @@ void GLCanvas::initializeGL()
 }  
 
 void GLCanvas::updateGL(){
-	//ballisticScene.Update();
-	
-	//spring.Update();
-	beadOnWire.Update();
 
+	//beadOnWire.Update();
+	//doublePendulum.Update();
 	update();
 
 }
@@ -46,8 +44,8 @@ void GLCanvas::paintGL()
 	glTranslatef( 0.0,  0.0, -5.0 );
 
 
-	beadOnWire.Draw();
-
+	//beadOnWire.Draw();
+	doublePendulum.Draw();
 }  
 
 

@@ -7,6 +7,7 @@
 #include <gl/glut.h>
 #include "global.h"
 #include "BeadOnWire.h"
+#include "DoublePendulum.h"
 
 class QTimer;  
 class QKeyEvent;  
@@ -36,6 +37,7 @@ private:
 	bool fullscreen;  //窗口是否全屏显示  
 	SCENCE scene;
 	BeadOnWire beadOnWire;
+	DoublePendulum doublePendulum;
 };  
 
 #endif // MYGLWIDGET_H  

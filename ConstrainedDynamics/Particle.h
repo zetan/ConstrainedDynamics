@@ -1,7 +1,7 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 #include "global.h"
-
+#include <QDebug>
 class Particle{
 public:
 	Particle(){}

@@ -33,6 +33,36 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\global">
+      <UniqueIdentifier>{dc6a243a-f6cf-49bb-9e17-ebee7b6ebd39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\particleSystem">
+      <UniqueIdentifier>{c280f0e5-9958-4c4b-a0cb-1f9363cd6c2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\forces">
+      <UniqueIdentifier>{22824b70-add8-4f23-8b16-d96c0e6a2b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\solver">
+      <UniqueIdentifier>{3b2774d5-4357-4a0a-a5a1-885cebdef24f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\forces">
+      <UniqueIdentifier>{574f8f6c-60a4-420e-81de-3795746e78f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\global">
+      <UniqueIdentifier>{1ef155ae-e950-4855-8b4f-0103190c435b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\solver">
+      <UniqueIdentifier>{f2de5dd9-7abb-4b98-b506-5be599e5bddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\particleSystem">
+      <UniqueIdentifier>{d52e0a55-45c0-48e6-a745-031af851cee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\matrix">
+      <UniqueIdentifier>{efaa52fe-2536-4fc3-8383-019a2b622b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\matrix">
+      <UniqueIdentifier>{927fd244-bff3-4768-8c6b-d753cad6d065}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -56,8 +86,35 @@
     <ClCompile Include="GeneratedFiles\Release\moc_canvas.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="BeadOnWire.cpp">
+      <Filter>Source Files\particleSystem</Filter>
+    </ClCompile>
     <ClCompile Include="canvas.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\global</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleConstrainForce.cpp">
+      <Filter>Source Files\forces</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\particleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem.cpp">
+      <Filter>Source Files\particleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ODESolver.cpp">
+      <Filter>Source Files\solver</Filter>
+    </ClCompile>
+    <ClCompile Include="DoublePendulum.cpp">
+      <Filter>Source Files\particleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="DoublePendulumConstrainForce.cpp">
+      <Filter>Source Files\forces</Filter>
+    </ClCompile>
+    <ClCompile Include="functions.cpp">
+      <Filter>Source Files\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="MATRIX.cpp">
+      <Filter>Source Files\matrix</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,7 +128,7 @@
       <Filter>Resource Files</Filter>
     </CustomBuild>
     <CustomBuild Include="canvas.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\global</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +136,37 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="global.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\global</Filter>
+    </ClInclude>
+    <ClInclude Include="BeadOnWire.h">
+      <Filter>Header Files\particleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleConstrainForce.h">
+      <Filter>Header Files\forces</Filter>
+    </ClInclude>
+    <ClInclude Include="DoublePendulum.h">
+      <Filter>Header Files\particleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="DoublePendulumConstrainForce.h">
+      <Filter>Header Files\forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Force.h">
+      <Filter>Header Files\forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Gravity.h">
+      <Filter>Header Files\forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ODESolver.h">
+      <Filter>Header Files\solver</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Header Files\particleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>Header Files\particleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="MATRIX.h">
+      <Filter>Header Files\matrix</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
