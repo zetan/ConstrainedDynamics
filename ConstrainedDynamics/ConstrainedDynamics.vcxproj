@@ -77,7 +77,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BeadOnWire.cpp" />
     <ClCompile Include="canvas.cpp" />
+    <ClCompile Include="CircleConstrainForce.cpp" />
     <ClCompile Include="constraineddynamics.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_canvas.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -98,6 +100,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ODESolver.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="constraineddynamics.h">
@@ -125,7 +130,14 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BeadOnWire.h" />
+    <ClInclude Include="CircleConstrainForce.h" />
+    <ClInclude Include="Force.h" />
     <ClInclude Include="global.h" />
+    <ClInclude Include="Gravity.h" />
+    <ClInclude Include="ODESolver.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleSystem.h" />
     <CustomBuild Include="canvas.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing canvas.h...</Message>
