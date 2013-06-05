@@ -15,6 +15,10 @@ public:
 	void ApplyForce(vector<Particle>& particles);
 	void setAlpha(double alpha){this->alpha = alpha;}
 	void setRadius(double radius){this->radius = radius;}
+	void setKd(double kd){this->kd = kd;}
+	void setKs(double ks){this->ks = ks;}
+
+	double getAlpha(){return alpha;}
 private:
 	 MATRIX C;
 	 MATRIX C1;
@@ -34,8 +38,12 @@ private:
 	 void ComputeF(vector<Particle>& particles);
 	 void ComputeW(vector<Particle>& particles);
 	 void ComputeC();
+	 void ComputeC1();
 	 void ComputeJ();
 	 void ComputeJ1();
+
+	 double ks;
+	 double kd;
 
 	 double alpha;
 	 double radius;

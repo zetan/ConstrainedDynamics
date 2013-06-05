@@ -29,8 +29,8 @@ void GLCanvas::initializeGL()
 
 void GLCanvas::updateGL(){
 
-	//beadOnWire.Update();
-	doublePendulum.Update();
+	beadOnWire.Update();
+	//doublePendulum.Update();
 	update();
 
 }
@@ -44,8 +44,8 @@ void GLCanvas::paintGL()
 	glTranslatef( 0.0,  0.0, -5.0 );
 
 
-	//beadOnWire.Draw();
-	doublePendulum.Draw();
+	beadOnWire.Draw();
+	//doublePendulum.Draw();
 }  
 
 

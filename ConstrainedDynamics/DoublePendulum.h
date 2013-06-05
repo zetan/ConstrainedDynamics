@@ -15,6 +15,9 @@ public:
 protected:
 	void ApplyForces();
 private:
+	void DrawParabola();
+	void DrawLine();
+
 	Gravity gravity;
 	DoublePendulumConstrainForce constrainForce;
 };

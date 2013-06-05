@@ -6,10 +6,13 @@
 
 class CircleConstrainForce : public Force{
 public:
-	CircleConstrainForce(){}
+	CircleConstrainForce();
 	~CircleConstrainForce(){}
 	void ApplyForce(Particle* particle);
 private:
+	double kd;
+	double ks;
+	
 //	Vector3D center;
 //	float radious;
 };

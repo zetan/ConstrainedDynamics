@@ -29,6 +29,26 @@ void DoublePendulum::ApplyForces(){
 }
 
 void DoublePendulum::Draw(){
+	DrawParabola();
 	for(int i = 0; i < particles.size(); i++)
 		particles[i].Draw();
+	DrawLine();
+}
+
+void DoublePendulum::DrawParabola(){
+	double alpha = constrainForce.getAlpha();
+	glBegin( GL_LINE_STRIP_ADJACENCY );
+	for (double x = -1.3; x <= 1.31; x+= 0.05)
+	{
+	//	float degInRad = i * 3.1415/ 180;
+		glVertex3f(x,alpha*x*x, 0);
+	}
+	glEnd();
+}
+
+void DoublePendulum::DrawLine(){
+	glBegin( GL_LINE_LOOP );
+	glVertex3f(particles[0].getPos().x, particles[0].getPos().y, 0);
+	glVertex3f(particles[1].getPos().x, particles[1].getPos().y, 0);
+	glEnd();
 }

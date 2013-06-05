@@ -4,7 +4,7 @@
 
 BeadOnWire::BeadOnWire(){
 	Particle bead;
-	bead.setPos(Vector3D(0.03, 1, 0));
+	bead.setPos(Vector3D(0.6, 0.8, 0));
 	bead.setVelocity(Vector3D(0, 0, 0));
 	bead.setForce(Vector3D(0, 0, 0));
 	bead.setMass(1);

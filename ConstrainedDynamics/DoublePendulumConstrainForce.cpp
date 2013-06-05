@@ -4,6 +4,9 @@ DoublePendulumConstrainForce::DoublePendulumConstrainForce():C(2,1),C1(2, 1), Q(
 	J(2, 4), J1(2, 4), lamda(2, 1){
 	alpha = 1;
 	radius = 1;
+
+	ks = 1;
+	kd = 1;
 }
 
 void DoublePendulumConstrainForce::ApplyForce(vector<Particle>& particles){
@@ -12,8 +15,9 @@ void DoublePendulumConstrainForce::ApplyForce(vector<Particle>& particles){
 	ComputeQ1(particles);
 	ComputeF(particles);
 	ComputeW(particles);
-	ComputeJ();
 	ComputeC();
+	ComputeJ();	
+	ComputeC1();
 	ComputeJ1();
 
 	MATRIX left = J * W * J.Trans();
@@ -23,17 +27,15 @@ void DoublePendulumConstrainForce::ApplyForce(vector<Particle>& particles){
 //	PrintMatrix(W, 4, "W");
 	PrintMatrix(J1.Scale(-1), 4, "J1.Scale(-1)");
 //	qDebug()<<"Matrix J"<<endl<<J<<endl;
-	MATRIX right =  J1.Scale(-1) * Q1  - J * W * F;
+	MATRIX right =  J1.Scale(-1) * Q1  - J * W * F - C.Scale(ks) - C1.Scale(kd);
 
-	PrintMatrix(left, 2, "left");
-	PrintMatrix(left.Inv(), 2, "left.inv");
-	PrintMatrix(right.Trans(), 2, "right.trans()");
+	
 	lamda = left.Inv() * right; //
 
-	PrintMatrix(lamda.Trans(), 2, "lamda.tran()");
+	
 
 	MATRIX constrainForce = J.Trans() * lamda;
-	PrintMatrix(constrainForce.Trans(), 4, "constrainForce.tran()");
+	
 	
 	Vector3D constrainForceA, constrainForceB;
 	constrainForceA.Set(constrainForce(1, 1), constrainForce(2, 1), 0);
@@ -95,6 +97,10 @@ void DoublePendulumConstrainForce::ComputeW(vector<Particle>& particles){
 void DoublePendulumConstrainForce::ComputeC(){
 	C.setBody(0,0, alpha * getX1() * getX1() - getY1());
 	C.setBody(1,0, (getX1() - getX2()) * (getX1() - getX2()) + (getY1() - getY2()) * (getY1() - getY2()) - radius * radius);
+}
+
+void DoublePendulumConstrainForce::ComputeC1(){
+	C1 = J * Q1;
 }
 
 void DoublePendulumConstrainForce::ComputeJ(){

@@ -24,12 +24,38 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Tab 1</string>
      </attribute>
+     <widget class="QPushButton" name="beadPlayBtn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>350</y>
+        <width>112</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Play</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="beanStopBtn">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>350</y>
+        <width>91</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stop</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -121,9 +147,43 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>beadPlayBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>ConstrainedDynamicsClass</receiver>
+   <slot>BeadStartPlay()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>917</x>
+     <y>533</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>776</x>
+     <y>524</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>beanStopBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>ConstrainedDynamicsClass</receiver>
+   <slot>BeadStopPlay()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1063</x>
+     <y>538</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>716</x>
+     <y>592</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>PendulumStartPlay()</slot>
   <slot>PendulumStopPlay()</slot>
+  <slot>BeadStartPlay()</slot>
+  <slot>BeadStopPlay()</slot>
  </slots>
 </ui>

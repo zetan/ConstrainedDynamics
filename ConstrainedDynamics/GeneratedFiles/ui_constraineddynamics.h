@@ -30,6 +30,8 @@ public:
     QWidget *centralWidget;
     QTabWidget *tabWidget;
     QWidget *tab;
+    QPushButton *beadPlayBtn;
+    QPushButton *beanStopBtn;
     QWidget *tab_2;
     QPushButton *pendulumPlayBtn;
     QPushButton *pendulumStopBtn;
@@ -49,6 +51,12 @@ public:
         tabWidget->setGeometry(QRect(892, 90, 251, 531));
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
+        beadPlayBtn = new QPushButton(tab);
+        beadPlayBtn->setObjectName(QStringLiteral("beadPlayBtn"));
+        beadPlayBtn->setGeometry(QRect(10, 350, 112, 34));
+        beanStopBtn = new QPushButton(tab);
+        beanStopBtn->setObjectName(QStringLiteral("beanStopBtn"));
+        beanStopBtn->setGeometry(QRect(140, 350, 91, 34));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
@@ -74,8 +82,10 @@ public:
         retranslateUi(ConstrainedDynamicsClass);
         QObject::connect(pendulumPlayBtn, SIGNAL(clicked()), ConstrainedDynamicsClass, SLOT(PendulumStartPlay()));
         QObject::connect(pendulumStopBtn, SIGNAL(clicked()), ConstrainedDynamicsClass, SLOT(PendulumStopPlay()));
+        QObject::connect(beadPlayBtn, SIGNAL(clicked()), ConstrainedDynamicsClass, SLOT(BeadStartPlay()));
+        QObject::connect(beanStopBtn, SIGNAL(clicked()), ConstrainedDynamicsClass, SLOT(BeadStopPlay()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ConstrainedDynamicsClass);
@@ -84,6 +94,8 @@ public:
     void retranslateUi(QMainWindow *ConstrainedDynamicsClass)
     {
         ConstrainedDynamicsClass->setWindowTitle(QApplication::translate("ConstrainedDynamicsClass", "ConstrainedDynamics", 0));
+        beadPlayBtn->setText(QApplication::translate("ConstrainedDynamicsClass", "Play", 0));
+        beanStopBtn->setText(QApplication::translate("ConstrainedDynamicsClass", "Stop", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("ConstrainedDynamicsClass", "Tab 1", 0));
         pendulumPlayBtn->setText(QApplication::translate("ConstrainedDynamicsClass", "Play", 0));
         pendulumStopBtn->setText(QApplication::translate("ConstrainedDynamicsClass", "Stop", 0));
