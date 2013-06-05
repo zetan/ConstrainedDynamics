@@ -13,9 +13,15 @@ public:
 	ConstrainedDynamics(QWidget *parent = 0);
 	~ConstrainedDynamics();
 
+public slots:
+		void BeadStartPlay();
+		void BeadStopPlay();
+		void PendulumStartPlay();
+		void PendulumStopPlay();
 private:
 	Ui::ConstrainedDynamicsClass ui;
 	GLCanvas* canvas;
+
 };
 
 #endif // CONSTRAINEDDYNAMICS_H

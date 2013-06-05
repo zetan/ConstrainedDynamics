@@ -14,7 +14,10 @@ void ParticleSystem::Solve(){
 }
 
 void ParticleSystem::Update(){
-	ClearForces();
-	ApplyForces();
-	Solve();
+	if(status == STATUS::PLAY){
+		ClearForces();
+		ApplyForces();
+		Solve();
+	}
 }
+

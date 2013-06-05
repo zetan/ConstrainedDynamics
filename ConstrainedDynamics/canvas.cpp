@@ -30,7 +30,7 @@ void GLCanvas::initializeGL()
 void GLCanvas::updateGL(){
 
 	//beadOnWire.Update();
-	//doublePendulum.Update();
+	doublePendulum.Update();
 	update();
 
 }

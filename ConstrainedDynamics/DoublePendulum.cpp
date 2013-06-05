@@ -25,7 +25,7 @@ void DoublePendulum::ApplyForces(){
 	for(int i = 0; i < particles.size(); i++){
 		gravity.ApplyForce(&particles[i]);
 	}
-//	constrainForce.ApplyForce(particles);
+	constrainForce.ApplyForce(particles);
 }
 
 void DoublePendulum::Draw(){

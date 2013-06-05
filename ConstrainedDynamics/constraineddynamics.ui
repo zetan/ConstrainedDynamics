@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1170</width>
+    <width>1161</width>
     <height>774</height>
    </rect>
   </property>
@@ -17,11 +17,14 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>932</x>
+      <x>892</x>
       <y>90</y>
-      <width>211</width>
+      <width>251</width>
       <height>531</height>
      </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -32,6 +35,32 @@
      <attribute name="title">
       <string>Tab 2</string>
      </attribute>
+     <widget class="QPushButton" name="pendulumPlayBtn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>370</y>
+        <width>112</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Play</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pendulumStopBtn">
+      <property name="geometry">
+       <rect>
+        <x>151</x>
+        <y>370</y>
+        <width>91</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stop</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -40,7 +69,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1170</width>
+     <width>1161</width>
      <height>31</height>
     </rect>
    </property>
@@ -59,5 +88,42 @@
  <resources>
   <include location="constraineddynamics.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pendulumPlayBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>ConstrainedDynamicsClass</receiver>
+   <slot>PendulumStartPlay()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>917</x>
+     <y>549</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>772</x>
+     <y>548</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pendulumStopBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>ConstrainedDynamicsClass</receiver>
+   <slot>PendulumStopPlay()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1098</x>
+     <y>558</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>659</x>
+     <y>606</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>PendulumStartPlay()</slot>
+  <slot>PendulumStopPlay()</slot>
+ </slots>
 </ui>

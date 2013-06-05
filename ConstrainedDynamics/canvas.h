@@ -18,7 +18,8 @@ class GLCanvas : public QGLWidget
 public:  
 	explicit GLCanvas(QWidget *parent = 0);  
 
-	
+	BeadOnWire& getBeadOnWireScene(){return beadOnWire;}
+	DoublePendulum& getDoublePendulumScene(){return doublePendulum;}
 	void SetScene(SCENCE scene){this->scene = scene;}
 protected:  
 	void initializeGL();  

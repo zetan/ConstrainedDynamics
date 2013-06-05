@@ -6,7 +6,7 @@
 #include "Particle.h"
 #include "MATRIX.h"
 #include <vector>
-
+#include <QDebug>
 
 class DoublePendulumConstrainForce : public Force{
 public:
@@ -18,8 +18,9 @@ public:
 private:
 	 MATRIX C;
 	 MATRIX C1;
-	 MATRIX Q;
-	 MATRIX Q1;
+	 MATRIX Q; //pos
+	 MATRIX Q1;//velocity
+	 MATRIX F; //force
 
 	 MATRIX W;
 	 MATRIX J;
@@ -27,27 +28,28 @@ private:
 
 	 MATRIX lamda;
 
-	 void ClearMatrix(){}
-	 void ComputeQ(vector<Particle>& particles){}
-	 void ComputeQ1(vector<Particle>& particles){}
-	 void ComputeW(vector<Particle>& particles){}
-	 void ComputeC(){}
-	 void ComputeJ(){}
-	 void ComputeJ1(){}
+	 void ClearMatrix();
+	 void ComputeQ(vector<Particle>& particles);
+	 void ComputeQ1(vector<Particle>& particles);
+	 void ComputeF(vector<Particle>& particles);
+	 void ComputeW(vector<Particle>& particles);
+	 void ComputeC();
+	 void ComputeJ();
+	 void ComputeJ1();
 
 	 double alpha;
 	 double radius;
 
-	 inline double getX1(){return Q(0,0);}
-	 inline double getY1(){return Q(1,0);}
-	 inline double getX2(){return Q(2,0);}
-	 inline double getY2(){return Q(3,0);}
+	 inline double getX1(){return Q(1,1);}
+	 inline double getY1(){return Q(2,1);}
+	 inline double getX2(){return Q(3,1);}
+	 inline double getY2(){return Q(4,1);}
 
-	 inline double getU1(){return Q1(0,0);}
-	 inline double getV1(){return Q1(1,0);}
-	 inline double getU2(){return Q1(2,0);}
-	 inline double getV2(){return Q1(3,0);}
-
+	 inline double getU1(){return Q1(1,1);}
+	 inline double getV1(){return Q1(2,1);}
+	 inline double getU2(){return Q1(3,1);}
+	 inline double getV2(){return Q1(4,1);}
+	 void PrintMatrix(MATRIX & m, int cols, char* name);
 };
 
 
