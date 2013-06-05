@@ -594,7 +594,65 @@ Reserved for future extension.
 */
 MATRIX MATRIX::Inv()
 {
-	return *this;
+	if(this->Row() != this->Column()){ // 只可求狭义逆矩阵，即行列数相同                                            
+		cout << "Matrix should be N x N\n";                                                           
+		exit(0);                                                                                      
+	}                                                                                                
+	// 构造一个与A行列相同的单位阵B                                                                  
+	MATRIX B(this->Row() , this->Column());  
+	B.setAll(0);
+	for(int r=0; r<this->Row(); r++)                                                                       
+		for(int c=0; c<this->Column(); c++)                                                                     
+			if(r == c) B.setBody(r,c,1.0);                                                                   
+
+	MATRIX A = *this;
+	// 对矩阵A进行A.row次消元运算，每次保证第K列只有对角线上非零                                     
+	// 同时以同样的操作施与矩阵B，结果A变为单位阵B为所求逆阵                                         
+	for(int k=0; k<A.Row(); k++){                                                                      
+		//------------------ 选主元 --------------------------------------                               
+		double max = fabs(A(k+1, k+1));   // 主元初始默认为右下方矩阵首个元素                             
+		int    ind = k;       // 主元行号默认为右下方矩阵首行                                 
+		// 结果第ind行为列主元行                                                                       
+		for(int n=k+1; n<A.Row(); n++){                                                             
+			if(fabs(A(n+1,k+1)) > max){   // 遇到绝对值更大的元素                                     
+				max = fabs(A(n+1,k+1));   // 更新主元值                                               
+				ind = n;      // 更新主元行号                                             
+			}                                                                                            
+		}                                                                                              
+		//------------------- 移动主元行 --------------------------------                              
+		if(ind != k){       // 主元行不是右下方矩阵首行                                    
+			for(int m=k; m<A.Row(); m++){   // 将主元行与右下方矩阵首行互换                                
+				double tempa = A(k+1,m+1);                                                                 
+				A.setBody(k, m, A(ind+1,m+1));                                                                 
+				A.setBody(ind, m, tempa);                                                                      
+			}                                                                                            
+			for(int m=0; m<B.Row(); m++){                                                                      
+				double tempb = B(k+1,m+1);  // 对矩阵B施以相同操作                                         
+				B.setBody(k, m, B(ind+1,m+1));  // B与A阶数相同，可在一个循环中                              
+				B.setBody(ind, m, tempb);                                                                      
+			}                                                                                            
+		}                                                                                              
+		//--------------------- 消元 -----------------------------------                               
+		// 第k次消元操作，以第k行作为主元行，将其上下各行的第k列元素化为零                             
+		// 同时以同样的参数对B施以同样的操作，此时可以将B看作A矩阵的一部分                             
+		for(int i=0; i<A.Column(); i++){                                                                  
+			if(i != k){                                                                                
+				double Mik = -A(i+1,k+1)/A(k+1,k+1);                                                     
+				for(int j=k+1; j<A.Row(); j++)                                                             
+					A.setBody(i, j, A(i+1,j+1) + Mik*A(k+1,j+1));                                              
+				for(int j=0; j<B.Row(); j++)                                                                   
+					B.setBody(i, j, B(i+1,j+1) + Mik*B(k+1,j+1));                                              
+			}//end if                                                                                  
+		}//loop i                                                                                    
+
+		double Mkk = 1.0/A(k+1,k+1);                                                                 
+		for(int j=0; j<A.Row(); j++)                                                                   
+			A.setBody(k, j, A(k+1,j+1) * Mkk);                                                             
+		for(int j=0; j<B.Row(); j++)                                                                       
+			B.setBody(k, j, B(k+1,j+1) * Mkk);                                                             
+	}//loop k                                                                                        
+	return B;
+
 }
 
 
@@ -651,6 +709,16 @@ MATRIX MATRIX::Trans()
 	return B;
 }
 
+MATRIX MATRIX::Scale(double s){
+	MATRIX B(this->Row(),this->Column());
+	for (int i=0;i<B.Row();i++){
+		for (int j=0;j<B.Column();j++){
+			B.setBody(i, j, Body[i*col+j] * s);
+		}
+	}
+
+	return B;
+}
 
 /**
 This function returns the upper part of
@@ -1041,21 +1109,24 @@ void MATRIX::PrintMatrix(int width,int precision,bool isfixed)
 	if (isfixed){
 		for (int i=0;i<row;i++){
 			for (int j=0;j<col;j++){
-				cout<<setw(width)
+				/*qDebug()<<setw(width)
 					<<fixed
 					<<setprecision(precision)
-					<<Body[i*col+j]<<' ';
+					<<Body[i*col+j]<<' ';*/
+				qDebug()<<Body[i*col+j]<<' ';
 			}
-			cout<<endl;
+			qDebug()<<endl;
 		}
 	}else{
 		for (int i=0;i<row;i++){
 			for (int j=0;j<col;j++){
-				cout<<setw(width)
+			/*	qDebug()<<setw(width)
 					<<setprecision(precision)
 					<<Body[i*col+j]<<' ';
+			*/
+				qDebug()<<Body[i*col+j]<<' ';
 			}
-			cout<<endl;
+			qDebug()<<endl;
 		}
 	}
 }
@@ -1082,7 +1153,7 @@ void MATRIX::Input()
 
 	for (int i=0;i<row;i++){
 		for (int j=0;j<col;j++){
-			cout<<"Inputting("<<(i+1)<<","<<(j+1)<<"):";
+			qDebug()<<"Inputting("<<(i+1)<<","<<(j+1)<<"):";
 			cin>>Body[col*i+j];
 		}
 	}
@@ -1104,10 +1175,10 @@ void MATRIX::setAll(double val)
 void MATRIX::PrintBody()
 {
 	for (int i=0;i<row*col;i++){
-		cout<<Body[i]<<"#"<<i<<' ';
+		qDebug()<<Body[i]<<"#"<<i<<' ';
 	}
 
-	cout<<endl;
+	qDebug()<<endl;
 }
 
 /**

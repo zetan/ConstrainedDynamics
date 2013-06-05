@@ -77,6 +77,7 @@ M*k 在每一个元素上 *k
 #include<string>
 #include<cmath>
 #include<iomanip>
+#include <QDebug>
 using namespace std;
 
 class MATRIX
@@ -102,6 +103,7 @@ class MATRIX
 		double NormInfinite();//norm p=infinity
 		MATRIX Inv();//inverse
 		MATRIX Trans();//transposition
+		MATRIX Scale(double s);
 		MATRIX Upper();//return upper triangular matrix
 		MATRIX UpperI();//return identity upper triangular matrix
 		MATRIX Lower();//return lower triangular matrix
