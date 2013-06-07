@@ -179,11 +179,29 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tabWidget</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>ConstrainedDynamicsClass</receiver>
+   <slot>ChangeScene(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>936</x>
+     <y>154</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>762</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>PendulumStartPlay()</slot>
   <slot>PendulumStopPlay()</slot>
   <slot>BeadStartPlay()</slot>
   <slot>BeadStopPlay()</slot>
+  <slot>ChangeScene(int)</slot>
+  <slot>slot2()</slot>
  </slots>
 </ui>

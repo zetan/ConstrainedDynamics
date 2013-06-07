@@ -84,6 +84,7 @@ public:
         QObject::connect(pendulumStopBtn, SIGNAL(clicked()), ConstrainedDynamicsClass, SLOT(PendulumStopPlay()));
         QObject::connect(beadPlayBtn, SIGNAL(clicked()), ConstrainedDynamicsClass, SLOT(BeadStartPlay()));
         QObject::connect(beanStopBtn, SIGNAL(clicked()), ConstrainedDynamicsClass, SLOT(BeadStopPlay()));
+        QObject::connect(tabWidget, SIGNAL(currentChanged(int)), ConstrainedDynamicsClass, SLOT(ChangeScene(int)));
 
         tabWidget->setCurrentIndex(0);
 

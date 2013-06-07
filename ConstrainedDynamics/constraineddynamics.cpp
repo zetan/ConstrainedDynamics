@@ -28,3 +28,8 @@ void ConstrainedDynamics::PendulumStartPlay(){
 void ConstrainedDynamics::PendulumStopPlay(){
 	canvas->getDoublePendulumScene().StopPlay();
 }
+
+void ConstrainedDynamics::ChangeScene(int i){
+	if(i == 0) canvas->SetScene(SCENCE::BEAD_ON_WIRE);
+	if(i == 1) canvas->SetScene(SCENCE::DOUBLE_PENDULUM);
+}

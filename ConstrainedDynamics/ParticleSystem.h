@@ -17,14 +17,17 @@ public:
 	virtual void Draw(){}
 	void StartPlay(){status = STATUS::PLAY;}
 	void StopPlay(){status = STATUS::NONE;}
+	vector<Particle>& getParticles(){return particles;}
+	virtual void ApplyForces(){}
 protected:
 	STATUS status;
 	void ClearForces();
-	virtual void ApplyForces(){}
+	
 	void Solve();
 	vector<Particle> particles;
-	ODESolver odeSolver;
 	float time;
+	ODESolver odeSolver;
+	
 };
 
 #endif

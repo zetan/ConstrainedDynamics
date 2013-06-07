@@ -21,13 +21,13 @@ void DoublePendulumConstrainForce::ApplyForce(vector<Particle>& particles){
 	ComputeJ1();
 
 	MATRIX left = J * W * J.Trans();
-	qDebug()<<"---------------update--------------------";
-	PrintMatrix(J, 4, "J");
-	PrintMatrix(J1, 4, "J1");
+//	qDebug()<<"---------------update--------------------";
+//	PrintMatrix(J, 4, "J");
+//	PrintMatrix(J1, 4, "J1");
 //	PrintMatrix(W, 4, "W");
-	PrintMatrix(J1.Scale(-1), 4, "J1.Scale(-1)");
+//	PrintMatrix(J1.Scale(-1), 4, "J1.Scale(-1)");
 //	qDebug()<<"Matrix J"<<endl<<J<<endl;
-	MATRIX right =  J1.Scale(-1) * Q1  - J * W * F - C.Scale(ks) - C1.Scale(kd);
+	MATRIX right =  J1.Scale(-1) * Q1  - J * W * F ;//- C.Scale(ks) - C1.Scale(kd);
 
 	
 	lamda = left.Inv() * right; //
@@ -101,6 +101,8 @@ void DoublePendulumConstrainForce::ComputeC(){
 
 void DoublePendulumConstrainForce::ComputeC1(){
 	C1 = J * Q1;
+//	C1.setBody(0,0, 2 * alpha * getX1() * getU1() - getV1());
+//	C1.setBody(1,0, 2 * (getU1() - getU2()) * (getX1() - getX2()) + 2 * (getV1() - getV2()) * (getY1() - getY2()));
 }
 
 void DoublePendulumConstrainForce::ComputeJ(){

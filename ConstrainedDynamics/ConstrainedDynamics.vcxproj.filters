@@ -116,6 +116,9 @@
     <ClCompile Include="MATRIX.cpp">
       <Filter>Source Files\matrix</Filter>
     </ClCompile>
+    <ClCompile Include="SpringForce.cpp">
+      <Filter>Source Files\forces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="constraineddynamics.h">
@@ -167,6 +170,9 @@
     </ClInclude>
     <ClInclude Include="MATRIX.h">
       <Filter>Header Files\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringForce.h">
+      <Filter>Header Files\forces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

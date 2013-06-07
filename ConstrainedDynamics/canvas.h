@@ -8,7 +8,7 @@
 #include "global.h"
 #include "BeadOnWire.h"
 #include "DoublePendulum.h"
-
+#include <QDebug>
 class QTimer;  
 class QKeyEvent;  
 
@@ -26,7 +26,9 @@ protected:
 	void resizeGL(int w, int h);  
 	void paintGL();  
 
-	void keyPressEvent(QKeyEvent *);  
+	void keyPressEvent(QKeyEvent *); 
+	void mousePressEvent(QMouseEvent *);
+	void mouseReleaseEvent(QMouseEvent *);
 	void closeEvent(QCloseEvent *);  
 
 
@@ -39,6 +41,8 @@ private:
 	SCENCE scene;
 	BeadOnWire beadOnWire;
 	DoublePendulum doublePendulum;
+	double mouseX;
+	double mouseY;
 };  
 
 #endif // MYGLWIDGET_H  

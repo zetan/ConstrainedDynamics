@@ -12,6 +12,7 @@ BeadOnWire::BeadOnWire(){
 }
 
 void BeadOnWire::ApplyForces(){
+	ClearForces();
 	for(int i = 0; i < particles.size(); i++){
 		gravity.ApplyForce(&particles[i]);
 		constrainForce.ApplyForce(&particles[i]);

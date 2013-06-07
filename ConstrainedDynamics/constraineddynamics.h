@@ -18,6 +18,7 @@ public slots:
 		void BeadStopPlay();
 		void PendulumStartPlay();
 		void PendulumStopPlay();
+		void ChangeScene(int);
 private:
 	Ui::ConstrainedDynamicsClass ui;
 	GLCanvas* canvas;

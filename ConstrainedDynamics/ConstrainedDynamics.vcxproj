@@ -107,6 +107,7 @@
     <ClCompile Include="ODESolver.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="SpringForce.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="constraineddynamics.h">
@@ -145,6 +146,7 @@
     <ClInclude Include="ODESolver.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="SpringForce.h" />
     <CustomBuild Include="canvas.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing canvas.h...</Message>

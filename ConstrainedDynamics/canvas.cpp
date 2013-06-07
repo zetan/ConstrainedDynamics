@@ -12,7 +12,7 @@ QGLWidget(parent), fullscreen(false)
 	timer = new QTimer(this);  
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateGL())); //²»Í£Ë¢ÐÂ´°¿Ú  
 	timer->start(20);  
-	
+	scene = SCENCE::BEAD_ON_WIRE;
 }  
 
 void GLCanvas::initializeGL()  
@@ -29,7 +29,8 @@ void GLCanvas::initializeGL()
 
 void GLCanvas::updateGL(){
 
-	beadOnWire.Update();
+	if(scene == SCENCE::BEAD_ON_WIRE)beadOnWire.Update();
+	if(scene == SCENCE::DOUBLE_PENDULUM) doublePendulum.Update();
 	//doublePendulum.Update();
 	update();
 
@@ -43,8 +44,8 @@ void GLCanvas::paintGL()
 
 	glTranslatef( 0.0,  0.0, -5.0 );
 
-
-	beadOnWire.Draw();
+	if(scene == SCENCE::BEAD_ON_WIRE)beadOnWire.Draw();
+	if(scene == SCENCE::DOUBLE_PENDULUM) doublePendulum.Draw();
 	//doublePendulum.Draw();
 }  
 
@@ -72,8 +73,27 @@ void GLCanvas::resizeGL(int width, int height)
 
 void GLCanvas::keyPressEvent(QKeyEvent *e)  
 {  
-
+	
 }  
+
+void GLCanvas::mousePressEvent(QMouseEvent *e){
+	mouseX = ((double)(e->pos().x() - 400)) / 150;
+	mouseY = ((double)(e->pos().y() - 300 )) / -150;
+	qDebug()<<"press x "<<e->pos().x()<<" y "<<e->pos().y();
+	qDebug()<<"release x "<<mouseX<<" y "<<mouseY;
+}
+
+void GLCanvas::mouseReleaseEvent(QMouseEvent *e){
+	double releaseX = ((double)(e->pos().x() - 400)) / 150;
+	double releaseY =((double)(e->pos().y() - 300 )) / -150;
+	qDebug()<<"release x "<<e->pos().x()<<" y "<<e->pos().y();
+	qDebug()<<"release x "<<releaseX<<" y "<<releaseY;
+	//beadOnWire
+	if(scene == SCENCE::DOUBLE_PENDULUM){
+		doublePendulum.setMouseSpring(Vector3D(mouseX, mouseY, 0), Vector3D(releaseX, releaseY, 0));
+	}
+}
+
 void GLCanvas::closeEvent(QCloseEvent *e)  
 {  
 	QMessageBox::StandardButton reply;  
