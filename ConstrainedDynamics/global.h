@@ -40,6 +40,17 @@ public:
 			glEnd();
 		
 	}
+
+	static void DrawArrow(Vector3D start, Vector3D direction){
+		Vector3D end = Vector3D::Add(start, direction);
+		
+		glBegin(GL_LINE_LOOP);
+		glVertex3f(start.x, start.y, 0);
+		glVertex3f(end.x, end.y, 0);
+		glEnd();
+		
+
+	}
 };
 
 #endif

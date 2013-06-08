@@ -7,6 +7,9 @@ DoublePendulumConstrainForce::DoublePendulumConstrainForce():C(2,1),C1(2, 1), Q(
 
 	ks = 1;
 	kd = 1;
+
+	constrainForceA = Vector3D(0,0,0);
+	constrainForceB = Vector3D(0,0,0);
 }
 
 void DoublePendulumConstrainForce::ApplyForce(vector<Particle>& particles){
@@ -37,7 +40,7 @@ void DoublePendulumConstrainForce::ApplyForce(vector<Particle>& particles){
 	MATRIX constrainForce = J.Trans() * lamda;
 	
 	
-	Vector3D constrainForceA, constrainForceB;
+	constrainForceA, constrainForceB;
 	constrainForceA.Set(constrainForce(1, 1), constrainForce(2, 1), 0);
 	constrainForceB.Set(constrainForce(3, 1), constrainForce(4, 1), 0);
 

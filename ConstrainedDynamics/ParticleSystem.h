@@ -11,12 +11,13 @@ using namespace std;
 class ParticleSystem{
 public:
 	ParticleSystem(){status = STATUS::NONE;}
-//	ParticleSystem(vector<Particle> particles);
+
 	~ParticleSystem(){}
+	virtual void Init(){}
 	void Update();
 	virtual void Draw(){}
 	void StartPlay(){status = STATUS::PLAY;}
-	void StopPlay(){status = STATUS::NONE;}
+	void StopPlay(){status = STATUS::NONE; Init();}
 	vector<Particle>& getParticles(){return particles;}
 	virtual void ApplyForces(){}
 protected:

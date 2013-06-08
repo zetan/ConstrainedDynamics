@@ -3,6 +3,7 @@
 CircleConstrainForce::CircleConstrainForce(){
 	ks = 1;
 	kd = 1;
+	constrainForce = Vector3D(0,0,0);
 }
 
 void CircleConstrainForce::ApplyForce(Particle* particle){
@@ -14,6 +15,6 @@ void CircleConstrainForce::ApplyForce(Particle* particle){
 	double ksForce = ks * Vector3D::DotProduct(particle->getPos(), particle->getVelocity());
 
 	float lamda = -1 * (fx + particle->getMass() * vv + kdForce + ksForce) / xx;
-	Vector3D constrainForce = Vector3D::Scale(particle->getPos(), lamda);
+	constrainForce = Vector3D::Scale(particle->getPos(), lamda);
 	particle->setForce(Vector3D::Add(particle->getForce(), constrainForce));
 }

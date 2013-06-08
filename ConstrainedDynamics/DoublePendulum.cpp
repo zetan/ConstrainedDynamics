@@ -21,6 +21,19 @@ DoublePendulum::DoublePendulum(){
 	constrainForce.setRadius(1);
 } 
 
+void DoublePendulum::Init(){
+	particles[0].setMass(1);
+	particles[0].setPos(Vector3D(0, 0, 0));
+	particles[0].setVelocity(Vector3D(0, 0, 0));
+	particles[0].setForce(Vector3D(0, 0, 0));
+	particles[1].setMass(1);
+	particles[1].setPos(Vector3D(1, 0, 0));
+	particles[1].setVelocity(Vector3D(0, 0, 0));
+	particles[1].setForce(Vector3D(0, 0, 0));
+	spring1.setActive(false);
+	spring2.setActive(false);
+}
+
 void DoublePendulum::ApplyForces(){
 	ClearForces();
 	//qDebug()<<(constrainForce.getAlpha() * particles[0].getPos().x * particles[0].getPos().x - particles[0].getPos().y);
@@ -51,6 +64,10 @@ void DoublePendulum::Draw(){
 
 	glColor3f(0.0, 1.0, 1.0);
 	DrawSpring();
+
+	glColor3f(1.0, 0.0, 0.0);
+	GLDraw::DrawArrow(particles[0].getPos(), Vector3D::Scale(constrainForce.getConstrainForceA(), 0.05));
+	GLDraw::DrawArrow(particles[1].getPos(), Vector3D::Scale(constrainForce.getConstrainForceB(), 0.05));
 }
 
 void DoublePendulum::DrawParabola(){
@@ -92,11 +109,18 @@ void DoublePendulum::DrawSpring(){
 		glVertex3f(particles[0].getPos().x, particles[0].getPos().y, 0);
 		glVertex3f(spring1.getPt().x, spring1.getPt().y, 0);
 		glEnd();
+		glTranslatef( spring1.getPt().x, spring1.getPt().y, 0);
+		GLDraw::DrawCircle(0.02);
+
+		glTranslatef(-spring1.getPt().x, -spring1.getPt().y, 0);
 	}
 	if(spring2.isActive() == true){
 		glBegin( GL_LINE_LOOP );
 		glVertex3f(particles[1].getPos().x, particles[1].getPos().y, 0);
 		glVertex3f(spring2.getPt().x, spring2.getPt().y, 0);
 		glEnd();
+		glTranslatef(spring2.getPt().x, spring2.getPt().y, 0);
+		GLDraw::DrawCircle(0.02);
+		glTranslatef(-spring2.getPt().x, -spring2.getPt().y, 0);
 	}
 }

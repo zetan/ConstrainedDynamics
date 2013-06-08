@@ -12,6 +12,7 @@ public:
 	BeadOnWire();
 	~BeadOnWire(){}
 	void Draw();
+	void Init();
 protected:
 	void ApplyForces();
 private:

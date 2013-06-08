@@ -9,10 +9,11 @@ public:
 	CircleConstrainForce();
 	~CircleConstrainForce(){}
 	void ApplyForce(Particle* particle);
+	Vector3D& getConstrainForce(){return constrainForce;}
 private:
 	double kd;
 	double ks;
-	
+	Vector3D constrainForce;
 //	Vector3D center;
 //	float radious;
 };

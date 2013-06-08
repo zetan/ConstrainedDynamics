@@ -14,6 +14,7 @@ public:
 	~DoublePendulum(){}
 	void Draw();
 	void setMouseSpring(Vector3D start, Vector3D end);
+	void Init();
 protected:
 	void ApplyForces();
 	

@@ -19,6 +19,8 @@ public:
 	void setKs(double ks){this->ks = ks;}
 
 	double getAlpha(){return alpha;}
+	Vector3D& getConstrainForceA(){return constrainForceA;}
+	Vector3D& getConstrainForceB(){return constrainForceB;}
 private:
 	 MATRIX C;
 	 MATRIX C1;
@@ -47,6 +49,9 @@ private:
 
 	 double alpha;
 	 double radius;
+
+	 Vector3D constrainForceA;
+	 Vector3D constrainForceB;
 
 	 inline double getX1(){return Q(1,1);}
 	 inline double getY1(){return Q(2,1);}
